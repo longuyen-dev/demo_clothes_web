@@ -5,14 +5,18 @@
  * See: https://www.gatsbyjs.com/docs/use-static-query/
  */
 
-import React from "react"
+import React, { useEffect } from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
+import { useDispatch } from 'react-redux';
+import { validate_token } from "../redux/actions/auth"
 
 import Header from "./header"
 import "./layout.css"
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Layout = ({ children }) => {
+  const dispatch = useDispatch();
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -22,6 +26,10 @@ const Layout = ({ children }) => {
       }
     }
   `)
+
+  useEffect(() => {
+    dispatch(validate_token())
+  }, [dispatch]);
 
   return (
     <>
