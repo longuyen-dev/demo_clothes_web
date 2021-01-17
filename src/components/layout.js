@@ -12,6 +12,7 @@ import { useDispatch } from 'react-redux';
 import { validate_token } from "../redux/actions/auth"
 
 import Header from "./header"
+import Footer from "./footer"
 import "./layout.css"
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -36,19 +37,20 @@ const Layout = ({ children }) => {
       <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
       <div
         style={{
-          margin: `0 auto`,
-          maxWidth: 960,
-          padding: `0 1.0875rem 1.45rem`,
+          padding: `0`,
+          background: `#f3efeb`,
         }}
       >
-        <main>{children}</main>
-        <footer style={{
-          marginTop: `2rem`
-        }}>
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.com">Gatsby</a>
-        </footer>
+        <main
+          style={{
+            margin: `0 auto`,
+            maxWidth: 960,
+            padding: `62.25px 1.0875rem 1.45rem`,
+          }}
+        >
+          {children}
+        </main>
+        <Footer />
       </div>
     </>
   )
