@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import { Nav, Navbar } from 'react-bootstrap';
@@ -9,10 +9,14 @@ import searchIco from "../assets/icon/search.png"
 import likeIco from "../assets/icon/like.png"
 import userIco from "../assets/icon/user.png"
 import cartIco from "../assets/icon/cart.png"
+import Hamburger from 'react-hamburgers';
+import './hamburgers.css';
 
 const Header = ({ siteTitle }) => {
   const isLoggedIn = useSelector(state => state.auth.isLoggedIn, shallowEqual);
   const dispatch = useDispatch();
+
+  const [hamActive, setHamActive] = useState(false)
 
   const signOut = () => {
     localStorage.removeItem('access_token');
@@ -29,7 +33,14 @@ const Header = ({ siteTitle }) => {
     >
       <Navbar expand="md" fixed="top">
         <Navbar.Brand href="/" style={{ fontWeight: "600" }}>{siteTitle}</Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Toggle aria-controls="basic-navbar-nav" >
+          <Hamburger
+            active={hamActive}
+            type="slider"
+            onClick={() => setHamActive(!hamActive)}
+          />
+        </Navbar.Toggle>
+
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
             <Link className="nav-link" to="/">Men</Link>
