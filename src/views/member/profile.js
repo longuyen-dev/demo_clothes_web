@@ -4,6 +4,7 @@ import SEO from "../../components/seo"
 import { useSelector, shallowEqual } from 'react-redux';
 import { Card, Row, Col } from 'react-bootstrap';
 import defaultAva from "../../assets/img/avatar.png"
+import { genderList } from "../../common/commonVar"
 
 const Profile = () => {
   const memberData = useSelector(state => state.auth.memberData, shallowEqual);
@@ -25,7 +26,7 @@ const Profile = () => {
               Full name
             </Col>
             <Col xs={8}>
-              {memberData.data.full_name}
+              {memberData.data.first_name} {memberData.data.last_name}
             </Col>
           </Row>
           <Row>
@@ -34,6 +35,22 @@ const Profile = () => {
             </Col>
             <Col xs={8}>
               {memberData.data.email}
+            </Col>
+          </Row>
+          <Row>
+            <Col xs={4}>
+              Gender
+            </Col>
+            <Col xs={8}>
+              {genderList[memberData.data.gender]}
+            </Col>
+          </Row>
+          <Row>
+            <Col xs={4}>
+              Phone Number
+            </Col>
+            <Col xs={8}>
+              {memberData.data.phone_number}
             </Col>
           </Row>
         </Card.Body>
