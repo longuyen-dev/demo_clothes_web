@@ -681,6 +681,23 @@ footer #interested-footer{
   float: left;
 }
 
+.sc-hKgILt {
+  background: none;
+}
+
+.custom-button-dark {
+  width: 100%;
+  background-color: #2c241d;
+  color: #fff;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  font-size: 14px;
+  outline: none;
+}
+
 /* END CUSTOM CSS */
 
 @media only screen and (max-width: 480px) {
